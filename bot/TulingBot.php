@@ -18,8 +18,10 @@ class TulingBot
         error_log(json_encode($postObj));
         //TODO DEBUG
         $r["r"] = true;
+        $recognition = $postObj['recognition'];
+        $info = urlencode(!empty($recognition) ? $recognition : $postObj['content']);
         $response = Util::getWebCont(Config::$config['TL_ROBOT_API'] . '?key=' . Config::$config['TulingAPIKey'] .
-            "&userid=" . $postObj['fromusername'] . '&info=' . urlencode($postObj['content']));
+            "&userid=" . $postObj['fromusername'] . '&info=' . $info);
         if (!$response) {
             $r['res'] = "我无法理解你的问题。抱歉。";
             return $r;

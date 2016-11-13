@@ -146,7 +146,7 @@ class WechatRequest{
      * @return array
      */
     public static function image(&$request){
-        $content = '收到图片';
+        $content = '我这不是智能手机,看不到图呢';
         return ResponsePassive::text($request['fromusername'], $request['tousername'], $content);
     }
 
@@ -157,10 +157,13 @@ class WechatRequest{
      */
     public static function voice(&$request){
         if(!isset($request['recognition'])){
-            $content = '收到语音';
+            $content = '好像信号不太好,能再说一次吗';
             return ResponsePassive::text($request['fromusername'], $request['tousername'], $content);
         }else{
-            $content = '收到语音识别消息，语音识别结果为：'.$request['recognition'];
+            //$content = '收到语音识别消息，语音识别结果为：'.$request['recognition'];
+            $bot = new TulingBot();
+            $ret = $bot->response($request);
+            $content = $ret['res'];
             return ResponsePassive::text($request['fromusername'], $request['tousername'], $content);
         }
     }
@@ -171,7 +174,7 @@ class WechatRequest{
      * @return array
      */
     public static function video(&$request){
-        $content = '收到视频';
+        $content = '我这播放器坏了,别发视频';
         return ResponsePassive::text($request['fromusername'], $request['tousername'], $content);
     }
 
@@ -181,7 +184,7 @@ class WechatRequest{
      * @return array
      */
     public static function shortvideo(&$request){
-        $content = '收到小视频';
+        $content = '你发的什么鬼视频啊';
         return ResponsePassive::text($request['fromusername'], $request['tousername'], $content);
     }
 
