@@ -1,5 +1,6 @@
 <?php
 namespace LaneWeChat\Core;
+use Bot\TulingBot;
 /**
  * 处理请求
  * Created by Lane.
@@ -132,7 +133,10 @@ class WechatRequest{
      * @return array
      */
     public static function text(&$request){
-        $content = '收到文本消息:'. $request['content'];
+        $bot = new TulingBot();
+        $ret = $bot->response($request);
+        $content = $ret['res'];
+        //$content = '收到文本消息:'. $request['content'];
         return ResponsePassive::text($request['fromusername'], $request['tousername'], $content);
     }
 

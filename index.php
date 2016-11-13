@@ -1,8 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: baidu
- * Date: 2016/11/13
- * Time: 17:30
- */
-require "LaneWeChat-master/wechat.php";
+use Bot\BotLoader;
+
+define("__ROOT__", dirname(__FILE__));
+
+require __ROOT__ . '/bot/BotLoader.php';
+
+$botLoader = new BotLoader();
+$botLoader->run();
