@@ -9,6 +9,9 @@ namespace Bot;
 class Util
 {
     static function getWebCont($url, $data = '', $sslVerify = false) {
+        //TODO DEBUG
+        error_log($url);
+        //TODO DEBUG
         $ch = curl_init();
         if ($sslVerify) {
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);

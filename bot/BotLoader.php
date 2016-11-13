@@ -1,12 +1,14 @@
 <?php
 namespace Bot;
-use LaneWeChat\WeChat;
+
+use \LaneWeChat\Core\Wechat;
 
 require __ROOT__ . '/bot/Config.php';
 require __ROOT__ . '/bot/Util.php';
 require __ROOT__ . '/bot/WXResponseHelper.php';
 require __ROOT__ . '/bot/TulingBot.php';
 require __ROOT__ . "/LaneWeChat-master/lanewechat.php";
+
 
 /**
  * Created by PhpStorm.
