@@ -14,9 +14,12 @@ class TulingBot
      */
     public function response($postObj)
     {
+        //TODO DEBUG
+        error_log(json_encode($postObj));
+        //TODO DEBUG
         $r["r"] = true;
         $response = Util::getWebCont(Config::$config['TL_ROBOT_API'] . '?key=' . Config::$config['TulingAPIKey'] .
-            "&userid=" . $postObj['from'] . '&info=' . urlencode($postObj['content']));
+            "&userid=" . $postObj['fromusername'] . '&info=' . urlencode($postObj['content']));
         if (!$response) {
             $r['res'] = "我无法理解你的问题。抱歉。";
             return $r;
